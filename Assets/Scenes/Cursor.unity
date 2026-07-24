@@ -332,8 +332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   T_mask: {fileID: 1206198890}
-  tempo: 60
+  tempo: 120
   pattern: 04000000030000000400000002000000
+  lerpSpeed: 15
 --- !u!4 &1688445572
 Transform:
   m_ObjectHideFlags: 0
