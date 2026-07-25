@@ -29,11 +29,13 @@ public class cursor_script : MonoBehaviour
     [Header("Explosion (Runs on Unscaled Time)")]
     [SerializeField] private float explosionRadius = 2.5f;
     [SerializeField] private float explosionForce = 12f;
-
     [SerializeField] private AnimationCurve falloff = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
     [SerializeField] private LayerMask affectedLayers;
-
     [SerializeField] private float maxLaunchSpeed = 60f;
+
+    [Header("Red Zones")]
+    [SerializeField] private LayerMask redZoneLayer;
+    private readonly string playerTag = "duck";
 
     [Header("Feedback Hooks")]
     public UnityEvent<Vector3> onDetonate;
@@ -94,13 +96,11 @@ public class cursor_script : MonoBehaviour
         isGrounded = state;
     }
 
-    // Call this from pickups!
     public void RefillEnergy()
     {
         currentEnergy = maxEnergy;
         canDilate = true;
 
-        // CHANGED
         if (energyBarImage != null)
         {
             energyBarImage.fillAmount = currentEnergy / maxEnergy;
@@ -191,10 +191,19 @@ public class cursor_script : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            Rigidbody2D rb = hitBuffer[i].attachedRigidbody;
+            Collider2D col = hitBuffer[i];
+            Rigidbody2D rb = col.attachedRigidbody;
             if (rb == null) continue;
 
-            Vector2 hitPoint = hitBuffer[i].ClosestPoint(worldPos);
+            if (col.CompareTag(playerTag))
+            {
+                if (col.IsTouchingLayers(redZoneLayer))
+                {
+                    continue;
+                }
+            }
+
+            Vector2 hitPoint = col.ClosestPoint(worldPos);
             Vector2 offset = hitPoint - (Vector2)worldPos;
             float dist = offset.magnitude;
             Vector2 dir = dist > 0.01f ? offset / dist : Random.insideUnitCircle.normalized;
