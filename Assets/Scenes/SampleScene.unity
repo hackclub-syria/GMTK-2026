@@ -631,10 +631,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.07099799
-    y: 0.071428575
-    width: 0.8573342
-    height: 0.85714287
+    x: 0.13963965
+    y: 0.13827656
+    width: 0.72072077
+    height: 0.7214429
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -667,7 +667,8 @@ Transform:
   m_LocalPosition: {x: -5.2475, y: -2.2841, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1526955291}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
@@ -693,7 +694,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1513,6 +1514,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1191080850}
+  - component: {fileID: 1191080851}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1535,6 +1537,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1191080851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191080848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a392c191315e3cc448cf68f0f72f7ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  vintageVolume: {fileID: 1526955292}
+  transitionDuration: 0.5
 --- !u!1 &1373791172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,6 +1855,55 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1526955290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526955291}
+  - component: {fileID: 1526955292}
+  m_Layer: 0
+  m_Name: VintageVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1526955291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526955290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 519420032}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1526955292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1526955290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 1
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: ecf545b7fd01b624c927a6fe73be32c8, type: 2}
 --- !u!1 &1544213017
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2216,9 @@ MonoBehaviour:
   settleWaitTime: 1
   sleepVelocity: 0.1
   wakeUpVelocity: 2
+  spriteRenderer: {fileID: 1544213019}
+  normalSprite: {fileID: 8868729072188591806, guid: 42785c257a2c50447b975c1af0a297c2, type: 3}
+  shotSprite: {fileID: 8062518948638018691, guid: 2cceecb927a498b40a926b0f24ec0102, type: 3}
 --- !u!1 &1555810144
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,6 +2591,10 @@ PrefabInstance:
       propertyPath: explosionRadius
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: transitionScript
+      value: 
+      objectReference: {fileID: 1191080851}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: affectedLayers.m_Bits
       value: 64

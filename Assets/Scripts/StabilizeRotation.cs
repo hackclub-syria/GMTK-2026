@@ -3,10 +3,16 @@ using System.Collections;
 
 public class SimpleStandUp : MonoBehaviour
 {
+    [Header("Stand Up Settings")]
     public float standUpTime = 0.3f;
     public float settleWaitTime = 1f;
     public float sleepVelocity = 0.1f;
     public float wakeUpVelocity = 2.0f;
+
+    [Header("Sprite Settings")]
+    public SpriteRenderer spriteRenderer;
+    public Sprite normalSprite;
+    public Sprite shotSprite;
 
     private Rigidbody2D rb;
     private CapsuleCollider2D capsule;
@@ -17,6 +23,8 @@ public class SimpleStandUp : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         capsule = GetComponent<CapsuleCollider2D>();
+
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -29,6 +37,9 @@ public class SimpleStandUp : MonoBehaviour
         {
             rb.freezeRotation = false;
             settledTimer = 0f;
+
+            if (spriteRenderer != null && shotSprite != null)
+                spriteRenderer.sprite = shotSprite;
         }
 
         if (currentSpeedSq < (sleepVelocity * sleepVelocity) && Mathf.Abs(rb.angularVelocity) < sleepVelocity)
@@ -84,6 +95,9 @@ public class SimpleStandUp : MonoBehaviour
 
         isStanding = false;
         settledTimer = 0f;
+
+        if (spriteRenderer != null && normalSprite != null)
+            spriteRenderer.sprite = normalSprite;
     }
 
     private float GetTargetY(float angle, float floorY)
@@ -113,9 +127,14 @@ public class SimpleStandUp : MonoBehaviour
 
         return floorY + clearance - rotatedOffset.y;
     }
-/* call this when detonate + duck is affected   public void UnfreezeForThrow()
+    /* call this when detonate + duck is affected   public void UnfreezeForThrow()
+  
+    public void UnfreezeForThrow()
     {
         if (rb != null) rb.freezeRotation = false;
         settledTimer = 0f;
-    }*/
+        if (spriteRenderer != null && shotSprite != null)
+            spriteRenderer.sprite = shotSprite;
+    }
+    */
 }
