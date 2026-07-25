@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f3b7d08e3b2b14d83d112b2e6e8b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::forceArrow_script
-  launchForce: 15
+  launchForce: 30
   delay: 0.2
   pullForce: 50
   brakingForce: 15

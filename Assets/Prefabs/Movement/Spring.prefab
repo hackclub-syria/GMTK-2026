@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd3c1996e3908444a3c7b142cc7e50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  force: 15
+  force: 10
   deactivatedSprite: {fileID: -259179152758352328, guid: 4d6d3ec12ac389460a1cdc9c15759b36, type: 3}
   activatedSprite: {fileID: 1115091781454682058, guid: 4d6d3ec12ac389460a1cdc9c15759b36, type: 3}
   delay: 0.3
