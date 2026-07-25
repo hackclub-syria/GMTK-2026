@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class cursor_script : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class cursor_script : MonoBehaviour
     [SerializeField] private Transform T_mask;
     [SerializeField] private float tempo = 120;
     [SerializeField] private int[] pattern = new int[] { 4, 2, 4, 2 };
+
+    [Header("Time Energy Bar")]
+    [SerializeField] private Image energyBarImage;
+    [SerializeField] private float maxEnergy = 100f;
+    [SerializeField] private float depletionRate = 40f;
+    private float currentEnergy;
+    private bool isGrounded = false;
+    private bool canDilate = true;
 
     [Header("Countdown Animation")]
     [SerializeField, Range(1f, 30f)] private float lerpSpeed = 15f;
@@ -40,7 +49,6 @@ public class cursor_script : MonoBehaviour
     private int currentBeat;
 
     private float baseFixedDeltaTime;
-
     private float targetMaskLocalY;
 
     private readonly Collider2D[] hitBuffer = new Collider2D[32];
@@ -62,6 +70,13 @@ public class cursor_script : MonoBehaviour
         targetMaskLocalY = T_mask.localPosition.y;
 
         baseFixedDeltaTime = Time.fixedDeltaTime;
+
+        currentEnergy = maxEnergy;
+
+        if (energyBarImage != null)
+        {
+            energyBarImage.fillAmount = currentEnergy / maxEnergy;
+        }
     }
 
     void Update()
@@ -74,27 +89,73 @@ public class cursor_script : MonoBehaviour
         T_mask.localPosition = new Vector3(T_mask.localPosition.x, newY, T_mask.localPosition.z);
     }
 
+    public void SetGroundedState(bool state)
+    {
+        isGrounded = state;
+    }
+
+    // Call this from pickups!
+    public void RefillEnergy()
+    {
+        currentEnergy = maxEnergy;
+        canDilate = true;
+
+        // CHANGED
+        if (energyBarImage != null)
+        {
+            energyBarImage.fillAmount = currentEnergy / maxEnergy;
+        }
+    }
+
     void Handle_TimeDilation()
     {
-        bool held = Keyboard.current != null && Keyboard.current.spaceKey.isPressed;
-        if (held && !isVintageActive)
+        bool isSpacePressed = Keyboard.current != null && Keyboard.current.spaceKey.isPressed;
+
+        if (!isSpacePressed)
+        {
+            canDilate = true;
+        }
+
+        bool applyDilation = isSpacePressed && canDilate && currentEnergy > 0f;
+
+        if (applyDilation)
+        {
+            currentEnergy -= depletionRate * Time.unscaledDeltaTime;
+            if (currentEnergy <= 0f)
+            {
+                currentEnergy = 0f;
+                canDilate = false;
+                applyDilation = false;
+            }
+        }
+        else if (isGrounded)
+        {
+            currentEnergy = maxEnergy;
+        }
+
+        if (energyBarImage != null)
+        {
+            energyBarImage.fillAmount = currentEnergy / maxEnergy;
+        }
+
+        if (applyDilation && !isVintageActive)
         {
             isVintageActive = true;
-            transitionScript.TurnOnVintageEffect();
+            if (transitionScript != null) transitionScript.TurnOnVintageEffect();
         }
-        else if (!held && isVintageActive)
+        else if (!applyDilation && isVintageActive)
         {
             isVintageActive = false;
-            transitionScript.TurnOffVintageEffect();
+            if (transitionScript != null) transitionScript.TurnOffVintageEffect();
         }
-        float target = held ? slowScale : 1f;
-        float duration = held ? enterDuration : exitDuration;
+
+        float target = applyDilation ? slowScale : 1f;
+        float duration = applyDilation ? enterDuration : exitDuration;
         float rate = 1f / Mathf.Max(duration, 0.0001f);
+
         Time.timeScale = Mathf.MoveTowards(Time.timeScale, target, rate * Time.unscaledDeltaTime);
         Time.fixedDeltaTime = baseFixedDeltaTime * Mathf.Max(Time.timeScale, 0.02f);
     }
-
-
 
     void Handle_countdown()
     {
@@ -113,14 +174,9 @@ public class cursor_script : MonoBehaviour
 
             targetMaskLocalY -= (T_mask.localScale.y / length);
 
-            if (currentBeat > 0)
-            {
-                // Debug.Log(currentBeat);
-            }
-            else
+            if (currentBeat <= 0)
             {
                 Detonate();
-
                 ind_pattern = (ind_pattern + 1) % pattern.Length;
                 currentBeat = pattern[ind_pattern];
             }
