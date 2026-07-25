@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class cursor_script : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class cursor_script : MonoBehaviour
 
     [Header("Feedback Hooks")]
     public UnityEvent<Vector3> onDetonate;
+    public PostProcessTransition transitionScript;
+    private bool isVintageActive = false;
 
     private Camera Cam;
     private float interval;
@@ -74,15 +77,24 @@ public class cursor_script : MonoBehaviour
     void Handle_TimeDilation()
     {
         bool held = Keyboard.current != null && Keyboard.current.spaceKey.isPressed;
-
+        if (held && !isVintageActive)
+        {
+            isVintageActive = true;
+            transitionScript.TurnOnVintageEffect();
+        }
+        else if (!held && isVintageActive)
+        {
+            isVintageActive = false;
+            transitionScript.TurnOffVintageEffect();
+        }
         float target = held ? slowScale : 1f;
         float duration = held ? enterDuration : exitDuration;
-
         float rate = 1f / Mathf.Max(duration, 0.0001f);
-
         Time.timeScale = Mathf.MoveTowards(Time.timeScale, target, rate * Time.unscaledDeltaTime);
         Time.fixedDeltaTime = baseFixedDeltaTime * Mathf.Max(Time.timeScale, 0.02f);
     }
+
+
 
     void Handle_countdown()
     {
