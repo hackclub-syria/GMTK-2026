@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
-using UnityEngine.Rendering;
 
 public class cursor_script : MonoBehaviour
 {
@@ -30,6 +29,7 @@ public class cursor_script : MonoBehaviour
     [Header("Feedback Hooks")]
     public UnityEvent<Vector3> onDetonate;
     public PostProcessTransition transitionScript;
+    public RippleController rippleController;
     private bool isVintageActive = false;
 
     private Camera Cam;
@@ -115,7 +115,7 @@ public class cursor_script : MonoBehaviour
 
             if (currentBeat > 0)
             {
-                Debug.Log(currentBeat);
+                // Debug.Log(currentBeat);
             }
             else
             {
@@ -154,6 +154,10 @@ public class cursor_script : MonoBehaviour
 
         onDetonate?.Invoke(worldPos);
 
+        if (rippleController != null && Mouse.current != null)
+        {
+            rippleController.TriggerRipple(Mouse.current.position.ReadValue());
+        }
     }
 
     void Replace_cursor()
