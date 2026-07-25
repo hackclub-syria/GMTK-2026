@@ -115,7 +115,7 @@ public class cursor_script : MonoBehaviour
 
             if (currentBeat > 0)
             {
-                Debug.Log(currentBeat);
+                // Debug.Log(currentBeat);
             }
             else
             {
