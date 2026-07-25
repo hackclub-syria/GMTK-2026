@@ -2216,6 +2216,9 @@ MonoBehaviour:
   settleWaitTime: 1
   sleepVelocity: 0.1
   wakeUpVelocity: 2
+  spriteRenderer: {fileID: 1544213019}
+  normalSprite: {fileID: 8868729072188591806, guid: 42785c257a2c50447b975c1af0a297c2, type: 3}
+  shotSprite: {fileID: 8062518948638018691, guid: 2cceecb927a498b40a926b0f24ec0102, type: 3}
 --- !u!1 &1555810144
 GameObject:
   m_ObjectHideFlags: 0
