@@ -46,9 +46,10 @@ public class mainMenuUI : MonoBehaviour
             buttons[i].interactable = false;
         }
         for (i = 0; i < unlockedlevel; i++) {
-            if (i == 10) break; 
+            if (i > 6) break; 
             buttons[i].interactable = true;
         }
+        buttons[9].interactable = buttons[10].interactable = true; 
 
         transitionManager = GameObject.FindGameObjectWithTag("sceneTransition");
     }
