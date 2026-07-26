@@ -9,7 +9,8 @@ public class SimpleStandUp : MonoBehaviour
     public float sleepVelocity = 0.1f;
     public float wakeUpVelocity = 2.0f;
 
-    [Header("Sprite Settings")]
+    [Header("Animation & Sprite Settings")]
+    public Animator animator;           // <-- ADDED to handle Idle animation
     public SpriteRenderer spriteRenderer;
     public Sprite normalSprite;
     public Sprite shotSprite;
@@ -25,6 +26,7 @@ public class SimpleStandUp : MonoBehaviour
         capsule = GetComponent<CapsuleCollider2D>();
 
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
+        if (animator == null) animator = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -33,21 +35,29 @@ public class SimpleStandUp : MonoBehaviour
 
         float currentSpeedSq = rb.linearVelocity.sqrMagnitude;
 
+        // 1. WAKING UP (Getting knocked around by physics)
+        // Only triggers once per hit because WakeUpDuck() sets freezeRotation to false
         if (rb.freezeRotation && currentSpeedSq > (wakeUpVelocity * wakeUpVelocity))
         {
-            rb.freezeRotation = false;
-            settledTimer = 0f;
-
-            if (spriteRenderer != null && shotSprite != null)
-                spriteRenderer.sprite = shotSprite;
+            WakeUpDuck();
         }
 
+        // 2. SETTLING DOWN (Coming to a rest)
         if (currentSpeedSq < (sleepVelocity * sleepVelocity) && Mathf.Abs(rb.angularVelocity) < sleepVelocity)
         {
             settledTimer += Time.fixedDeltaTime;
-            if (settledTimer > settleWaitTime && Mathf.Abs(Mathf.DeltaAngle(rb.rotation, 0f)) > 0.5f)
+            if (settledTimer > settleWaitTime)
             {
-                StartCoroutine(StandUpRoutine());
+                if (Mathf.Abs(Mathf.DeltaAngle(rb.rotation, 0f)) > 0.5f)
+                {
+                    // Duck is resting on its side, play the standup routine
+                    StartCoroutine(StandUpRoutine());
+                }
+                else if (!rb.freezeRotation)
+                {
+                    // Edge case: Duck landed perfectly upright naturally without rotating!
+                    SnapToIdle();
+                }
             }
         }
         else
@@ -66,19 +76,16 @@ public class SimpleStandUp : MonoBehaviour
 
         float startAngle = rb.rotation;
         float startX = rb.position.x;
-
         float floorY = capsule.bounds.min.y;
-
         float elapsed = 0f;
+
         while (elapsed < standUpTime)
         {
             elapsed += Time.fixedDeltaTime;
-
             float t = Mathf.Clamp01(elapsed / standUpTime);
             float smoothT = t * t * (3f - 2f * t);
 
             float currentAngle = Mathf.LerpAngle(startAngle, 0f, smoothT);
-
             float requiredY = GetTargetY(currentAngle, floorY);
 
             rb.MoveRotation(currentAngle);
@@ -89,19 +96,59 @@ public class SimpleStandUp : MonoBehaviour
 
         rb.rotation = 0f;
         rb.position = new Vector2(startX, GetTargetY(0f, floorY));
-
         rb.isKinematic = false;
-        rb.freezeRotation = true;
+
+        SnapToIdle(); // Duck is stabilized, hook to idle!
 
         isStanding = false;
         settledTimer = 0f;
+    }
 
-        if (spriteRenderer != null && normalSprite != null)
+    // --- NEW HELPER METHODS ---
+
+    private void SnapToIdle()
+    {
+        rb.freezeRotation = true;
+        rb.rotation = 0f; // Ensure perfect zero
+
+        if (animator != null)
+        {
+            animator.SetBool("IsIdle", true);
+        }
+        // Fallback safety if Animator isn't used
+        else if (spriteRenderer != null && normalSprite != null)
+        {
             spriteRenderer.sprite = normalSprite;
+        }
+    }
+
+    private void WakeUpDuck()
+    {
+        rb.freezeRotation = false;
+        settledTimer = 0f;
+
+        if (animator != null)
+        {
+            animator.SetBool("IsIdle", false);
+        }
+
+        // Even with Animator, we can optionally map a static shotSprite 
+        // to a 1-frame animation clip in your animator window
+        if (spriteRenderer != null && shotSprite != null)
+        {
+            spriteRenderer.sprite = shotSprite;
+        }
+    }
+
+    // Called instantly from cursor detonate so animation reacts on frame 1
+    public void UnfreezeForThrow()
+    {
+        WakeUpDuck();
     }
 
     private float GetTargetY(float angle, float floorY)
     {
+        // ... (Keep your EXACT original GetTargetY logic down here!)
         Vector2 scale = transform.lossyScale;
         Vector2 localCore;
         float radius;
@@ -127,14 +174,4 @@ public class SimpleStandUp : MonoBehaviour
 
         return floorY + clearance - rotatedOffset.y;
     }
-    /* call this when detonate + duck is affected   public void UnfreezeForThrow()
-  
-    public void UnfreezeForThrow()
-    {
-        if (rb != null) rb.freezeRotation = false;
-        settledTimer = 0f;
-        if (spriteRenderer != null && shotSprite != null)
-            spriteRenderer.sprite = shotSprite;
-    }
-    */
 }

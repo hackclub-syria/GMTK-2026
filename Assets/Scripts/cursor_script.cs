@@ -229,6 +229,8 @@ public class cursor_script : MonoBehaviour
                 {
                     continue;
                 }
+
+                col.attachedRigidbody.GetComponent<SimpleStandUp>()?.UnfreezeForThrow();
             }
 
             Vector2 hitPoint = col.ClosestPoint(worldPos);
