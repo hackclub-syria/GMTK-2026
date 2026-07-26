@@ -78,8 +78,11 @@ public class mainMenuUI : MonoBehaviour
         mainMenu.SetActive(true);
         SceneManager.LoadScene("level0"); 
     }
-    public void settingsButton()
-    {
+    public void quitLevelsMenu() {
+        levels.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+    public void settingsButton() {
         settings.SetActive(true);
         mainMenu.SetActive(false);
     }
