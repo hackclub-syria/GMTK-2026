@@ -1254,10 +1254,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5705263
-    y: 0.029948525
-    width: 0.50526315
-    height: 0.50538135
+    x: 0.017414602
+    y: 0.01786246
+    width: 0.96450096
+    height: 0.9645728
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -57693,6 +57693,10 @@ PrefabInstance:
     - target: {fileID: 5119982496109121925, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
       propertyPath: m_Name
       value: Duck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119982496109121925, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
+      propertyPath: m_TagString
+      value: duck
       objectReference: {fileID: 0}
     - target: {fileID: 6446992363939319380, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
       propertyPath: m_Camera
