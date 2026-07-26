@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Audio; // Added for AudioMixer and AudioMixerSnapshot
 
 public class cursor_script : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class cursor_script : MonoBehaviour
     [SerializeField, Range(0.02f, 0.5f)] private float slowScale = 0.1f;
     [SerializeField] private float enterDuration = 0.15f;
     [SerializeField] private float exitDuration = 0.06f;
+
+    [Header("Audio Mixer Effects")]
+    [SerializeField] private AudioMixerSnapshot normalSnapshot;
+    [SerializeField] private AudioMixerSnapshot slowMotionSnapshot;
 
     [Header("Explosion (Runs on Unscaled Time)")]
     [SerializeField] private float explosionRadius = 2.5f;
@@ -146,15 +151,32 @@ public class cursor_script : MonoBehaviour
             energyBarImage.fillAmount = currentEnergy / maxEnergy;
         }
 
+        // --- Slowmotion State Trigger ---
         if (applyDilation && !isVintageActive)
         {
             isVintageActive = true;
+
+            // Visual Effect
             if (transitionScript != null) transitionScript.TurnOnVintageEffect();
+
+            // Audio Effect: Transition to Slow Motion Audio Snapshot
+            if (slowMotionSnapshot != null)
+            {
+                slowMotionSnapshot.TransitionTo(enterDuration);
+            }
         }
         else if (!applyDilation && isVintageActive)
         {
             isVintageActive = false;
+
+            // Visual Effect
             if (transitionScript != null) transitionScript.TurnOffVintageEffect();
+
+            // Audio Effect: Return to Normal Audio Snapshot
+            if (normalSnapshot != null)
+            {
+                normalSnapshot.TransitionTo(exitDuration);
+            }
         }
 
         float target = applyDilation ? slowScale : 1f;

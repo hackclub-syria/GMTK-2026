@@ -379,10 +379,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.59090906
-    y: 0.102073364
-    width: 0.57416266
-    height: 0.57416266
+    x: 0.5131579
+    y: 0.099415205
+    width: 0.5263158
+    height: 0.5263158
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -2592,6 +2592,10 @@ PrefabInstance:
     - target: {fileID: 2820076060129406054, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: m_Name
       value: Cursor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035689146738987776, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: energyBarImage

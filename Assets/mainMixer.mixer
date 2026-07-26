@@ -15,6 +15,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -2762918606172757967}
+  - {fileID: 61563467826406648}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -58,6 +59,7 @@ AudioMixerController:
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
   - {fileID: 24500006}
+  - {fileID: 3702816852418861095}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -118,11 +120,36 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot
+  m_Name: Normal
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 084e548b3e2d6454d9fe0c7ad6c33cff
-  m_FloatValues: {}
+  m_FloatValues:
+    a1083623760cb3a4bb7efe5d61dc7040: 493
+    49d8c6052dd286248b3e551fec0cac91: 2249
+    93377c793c4301346bcafd9bfd6bb46b: 1000
+    0b1d5faa17f7fc74386277d4f77fd3b2: 22000
+    ddf57f4b236a91c45a30cba4ac49c7ec: 200
+    f3d320dee6865e54481342d4ef6b78b4: 0
+    d4dd9def520682941bb7a877071241dd: 0
   m_TransitionOverrides: {}
+--- !u!244 &61563467826406648
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: afa89e0e3131df546ad8eac1541c5cfa
+  m_EffectName: Lowpass
+  m_MixLevel: a1acdaf977043cd47bf8a5e6e10c8c98
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: 0b1d5faa17f7fc74386277d4f77fd3b2
+  - m_ParameterName: Resonance
+    m_GUID: 1a1c440119addd942bd5986b7b0fcab0
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &1282706149053651227
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -142,3 +169,20 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!245 &3702816852418861095
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SlowMotion
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 41f4d8843570cf94cbda7bd24dca4873
+  m_FloatValues:
+    a1083623760cb3a4bb7efe5d61dc7040: 493
+    93377c793c4301346bcafd9bfd6bb46b: 1000
+    0b1d5faa17f7fc74386277d4f77fd3b2: 1000
+    ddf57f4b236a91c45a30cba4ac49c7ec: 200
+    f3d320dee6865e54481342d4ef6b78b4: 0
+    d4dd9def520682941bb7a877071241dd: 0
+  m_TransitionOverrides: {}

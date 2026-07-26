@@ -1254,10 +1254,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.017414602
-    y: 0.01786246
-    width: 0.96450096
-    height: 0.9645728
+    x: 0.23684211
+    y: 0.23586744
+    width: 0.5263158
+    height: 0.5263158
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -56598,10 +56598,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cursor
       objectReference: {fileID: 0}
+    - target: {fileID: 3035689146738987776, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3035689146738987776, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7390554690238701069, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: energyBarImage
       value: 
       objectReference: {fileID: 1372600330}
+    - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: normalSnapshot
+      value: 
+      objectReference: {fileID: 24500006, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: rippleController
       value: 
@@ -56610,6 +56622,10 @@ PrefabInstance:
       propertyPath: transitionScript
       value: 
       objectReference: {fileID: 1191080851}
+    - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: slowMotionSnapshot
+      value: 
+      objectReference: {fileID: 3702816852418861095, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: onDetonate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
