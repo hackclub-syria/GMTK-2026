@@ -346,7 +346,7 @@ Transform:
   m_GameObject: {fileID: 80292790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.247467, y: -0.92767024, z: -10}
+  m_LocalPosition: {x: -9.80542, y: -2.767697, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1344,28 +1344,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347499239}
   m_CullTransparentMesh: 1
---- !u!1 &384303022 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5119982496109121925, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
-  m_PrefabInstance: {fileID: 7728167871073072473}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &384303023 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 350152706466700471, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
   m_PrefabInstance: {fileID: 7728167871073072473}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &384303024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 384303022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a666d611323a0a64795d9a5c27dd696c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EmoRunAwayFromParents
 --- !u!1 &427243857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,10 +1674,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.017414602
-    y: 0.01786246
-    width: 0.96450096
-    height: 0.9645728
+    x: 0.07862408
+    y: 0.18356644
+    width: 0.47174448
+    height: 0.47202796
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
@@ -1724,7 +1707,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.247467, y: -0.92767024, z: -10}
+  m_LocalPosition: {x: -9.80542, y: -2.767697, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6559,18 +6542,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 223749101}
     m_Modifications:
     - target: {fileID: 350152706466700471, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0012516
-      objectReference: {fileID: 0}
-    - target: {fileID: 350152706466700471, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0012516
-      objectReference: {fileID: 0}
-    - target: {fileID: 350152706466700471, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0012516
-      objectReference: {fileID: 0}
-    - target: {fileID: 350152706466700471, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
       propertyPath: m_LocalPosition.x
       value: -403.73465
       objectReference: {fileID: 0}
@@ -6630,21 +6601,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 8647497839535146307, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
-      propertyPath: m_Name
-      value: Energy Bar Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 8949470376101727849, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5119982496109121925, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 384303024}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed1526ef4b88b34a86820943d03cf37, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
