@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4533701655400247860}
   - component: {fileID: 2679830143549228286}
   - component: {fileID: 6713816089690810218}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spring
   m_TagString: Untagged
   m_Icon: {fileID: 0}

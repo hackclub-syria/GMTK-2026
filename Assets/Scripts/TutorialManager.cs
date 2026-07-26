@@ -5,7 +5,7 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject[] tutorialGroups;
     public int currentIndex = 0;
-
+    [SerializeField] private GameObject secretTunnel, forceOrb, levelSwitch;
     private void Start()
     {
         if (tutorialGroups == null || tutorialGroups.Length == 0) return;
@@ -31,6 +31,12 @@ public class TutorialManager : MonoBehaviour
             else
             {
                 tutorialGroups[currentIndex].SetActive(false);
+            }
+            if (currentIndex >= 6)
+            {
+                forceOrb.SetActive(true);
+                levelSwitch.SetActive(true);
+                secretTunnel.SetActive(false);
             }
         }
     }
