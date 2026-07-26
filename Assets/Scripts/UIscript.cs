@@ -25,6 +25,7 @@ public class UIscript : MonoBehaviour
             PlayerPrefs.SetFloat("master", 1);
             PlayerPrefs.SetFloat("music", 1);
             PlayerPrefs.SetFloat("sfx", 1);
+            PlayerPrefs.Save();
         }
 
         masterSlider.value = PlayerPrefs.GetFloat("master");
@@ -111,18 +112,21 @@ public class UIscript : MonoBehaviour
     public void changeMaster()
     {
         PlayerPrefs.SetFloat("master", masterSlider.value);
+        PlayerPrefs.Save();
         audioMixer.SetFloat("masterVolume", Mathf.Log10(Mathf.Max(masterSlider.value, 0.0001f)) * 20f);
     }
 
     public void changeMusic()
     {
         PlayerPrefs.SetFloat("music", musicSlider.value);
+        PlayerPrefs.Save();
         audioMixer.SetFloat("musicVolume", Mathf.Log10(Mathf.Max(musicSlider.value, 0.0001f)) * 20f);
     }
 
     public void changeSFX()
     {
         PlayerPrefs.SetFloat("sfx", SFXslider.value);
+        PlayerPrefs.Save();
         audioMixer.SetFloat("SFXvolume", Mathf.Log10(Mathf.Max(SFXslider.value, 0.0001f)) * 20f);
     }
 }
