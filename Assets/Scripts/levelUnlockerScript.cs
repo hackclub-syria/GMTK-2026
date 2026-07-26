@@ -13,7 +13,7 @@ public class levelUnlockerScript : MonoBehaviour {
         if (collision.CompareTag("duck")) {
             string sceneName = SceneManager.GetActiveScene().name;
             int thisLevel = sceneName[sceneName.Length - 1] - '0';
-            if (thisLevel == 0) thisLevel = 10;
+            //if (thisLevel == 0) thisLevel = 10;
             if (thisLevel >= PlayerPrefs.GetInt("unlockedlevel")) {
                 PlayerPrefs.SetInt("unlockedlevel", thisLevel + 1);
                 PlayerPrefs.Save();
