@@ -2,8 +2,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class levelUnlockerScript : MonoBehaviour
-{
+public class levelUnlockerScript : MonoBehaviour {
+    private GameObject transitionManager;
+
+    private void Awake() {
+        transitionManager = GameObject.FindGameObjectWithTag("sceneTransition");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("duck")) {
             string sceneName = SceneManager.GetActiveScene().name;
@@ -13,7 +18,9 @@ public class levelUnlockerScript : MonoBehaviour
                 PlayerPrefs.SetInt("unlockedlevel", thisLevel + 1);
                 PlayerPrefs.Save();
             }
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
+            transitionManager.transform.GetChild(0).gameObject.SetActive(true);
+            //transitionManager.SetActive(true);
+            sceneTransitionScript.instance.openLevel(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

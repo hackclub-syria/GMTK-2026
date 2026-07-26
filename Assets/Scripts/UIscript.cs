@@ -8,6 +8,7 @@ public class UIscript : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settings;
+    private GameObject transitionManager;
 
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
@@ -39,6 +40,8 @@ public class UIscript : MonoBehaviour
 
         pauseMenu.SetActive(false);
         settings.SetActive(false);
+
+        transitionManager = GameObject.FindGameObjectWithTag("sceneTransition");
     }
 
     void Update()
@@ -107,11 +110,15 @@ public class UIscript : MonoBehaviour
     {
         Time.timeScale = 1f;
         duck.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        SceneManager.LoadSceneAsync(0);
+        //SceneManager.LoadSceneAsync(0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         outline.GetComponent<SpriteRenderer>().enabled = true;
         fill.GetComponent<SpriteRenderer>().enabled = true;
+
+        transitionManager.transform.GetChild(0).gameObject.SetActive(true);
+        //transitionManager.SetActive(true); 
+        sceneTransitionScript.instance.openLevel(0);
     }
 
     public void changeMaster()
