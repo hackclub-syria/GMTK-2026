@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class TutorialManager : MonoBehaviour
 {
     public GameObject[] tutorialGroups;
-    private int currentIndex = 0;
+    public int currentIndex = 0;
 
     private void Start()
     {

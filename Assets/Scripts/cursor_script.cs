@@ -216,7 +216,7 @@ public class cursor_script : MonoBehaviour
 
     private void Detonate()
     {
-        Vector3 worldPos = transform.localPosition;
+        Vector3 worldPos = transform.position;
 
         int count = Physics2D.OverlapCircleNonAlloc(worldPos, explosionRadius, hitBuffer, affectedLayers);
 
@@ -262,6 +262,7 @@ public class cursor_script : MonoBehaviour
         Vector2 pos_screen = Mouse.current.position.ReadValue();
         Vector3 pos_world = Cam.ScreenToWorldPoint(pos_screen);
         pos_world.z = 0f;
-        transform.localPosition = pos_world;
+
+        transform.position = pos_world;
     }
 }
