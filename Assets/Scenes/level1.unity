@@ -54124,6 +54124,10 @@ PrefabInstance:
       propertyPath: duck
       value: 
       objectReference: {fileID: 1237991022}
+    - target: {fileID: 2132529661258035873, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2560818717931345068, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.954792
@@ -54356,6 +54360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pause Menu
       objectReference: {fileID: 0}
+    - target: {fileID: 7970130801811491507, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8127658004013663030, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
       propertyPath: m_Value
       value: 0.0001
@@ -54399,6 +54407,10 @@ PrefabInstance:
     - target: {fileID: 8873058110403722549, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8996545510022084031, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

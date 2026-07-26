@@ -59,13 +59,11 @@ public class UIscript : MonoBehaviour
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
         duck.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         isPaused = true;
         Debug.Log(Time.timeScale);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        cur.SetActive(false);
     }
 
     public void Resume()
@@ -78,7 +76,6 @@ public class UIscript : MonoBehaviour
         isPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-        cur.SetActive(true);
 
 
     }
