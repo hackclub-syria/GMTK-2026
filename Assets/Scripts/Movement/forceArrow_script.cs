@@ -12,13 +12,15 @@ public class forceArrow_script : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Rigidbody2D rb = collider.attachedRigidbody;
+       if(collider.CompareTag("duck"))
+       { Rigidbody2D rb = collider.attachedRigidbody;
 
-        if (rb != null)
-        {
-            StopAllCoroutines();
-            StartCoroutine(PullPush(rb));
-        }
+            if (rb != null)
+            {
+                StopAllCoroutines();
+                StartCoroutine(PullPush(rb));
+            }
+       }
     }
 
     private IEnumerator PullPush(Rigidbody2D rb)
