@@ -101453,10 +101453,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1846413141966748912, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
-      propertyPath: isBitch
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2820076060129406054, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: m_Name
       value: Cursor
