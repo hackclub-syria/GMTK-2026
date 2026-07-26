@@ -49,7 +49,7 @@ public class mainMenuUI : MonoBehaviour
             if (i > 6) break; 
             buttons[i].interactable = true;
         }
-        buttons[9].interactable = buttons[10].interactable = true; 
+        buttons[8].interactable = buttons[9].interactable = true; 
 
         transitionManager = GameObject.FindGameObjectWithTag("sceneTransition");
     }

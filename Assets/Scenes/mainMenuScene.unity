@@ -3672,8 +3672,12 @@ MonoBehaviour:
   comicPanel: {fileID: 964587670}
   panelImage: {fileID: 964587671}
   images:
-  - {fileID: -3535067522681578761, guid: 64b1712f564ca894f886733756e8df96, type: 3}
-  - {fileID: -1260821678190538475, guid: 48bdfd56ba9d1c649b32440811ce9f5e, type: 3}
+  - {fileID: -3205002073102302880, guid: 42743295d425585499df9dc54cf8779c, type: 3}
+  - {fileID: -1502175772, guid: 42743295d425585499df9dc54cf8779c, type: 3}
+  - {fileID: 1896786751, guid: 42743295d425585499df9dc54cf8779c, type: 3}
+  - {fileID: 917508201, guid: 42743295d425585499df9dc54cf8779c, type: 3}
+  - {fileID: 1507567743, guid: 42743295d425585499df9dc54cf8779c, type: 3}
+  - {fileID: 1819576535, guid: 42743295d425585499df9dc54cf8779c, type: 3}
   alwaysPlayComics: 0
 --- !u!4 &1073194386
 Transform:
