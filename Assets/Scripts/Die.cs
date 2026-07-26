@@ -5,18 +5,32 @@ using UnityEngine.InputSystem;
 
 public class Die : MonoBehaviour
 {
+    public static Die instance { get; private set; }
+    [Header("Settings")]
     public GameObject deathVfxPrefab;
     public GameObject restartMenu;
     public GameObject pauseMenu;
     private SpriteRenderer duckSprite;
     private Collider2D duckCollider;
 
-    void Start()
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+    }
+
+    private void Start()
     {
         Invoke("DieBih", 2f);
         duckSprite = GetComponent<SpriteRenderer>();
         duckCollider = GetComponent<Collider2D>();
     }
+
     public void DieBih()
     {
         StartCoroutine(JuicyDeathRoutine());
@@ -28,13 +42,19 @@ public class Die : MonoBehaviour
         pauseMenu.SetActive(false);
         if (duckCollider != null) duckCollider.enabled = false;
         if (duckSprite != null) duckSprite.enabled = false;
-        Instantiate(deathVfxPrefab, transform.position, Quaternion.identity);
-        
-        // impact frame ahh
+        if (deathVfxPrefab != null)
+        {
+            Instantiate(deathVfxPrefab, transform.position, Quaternion.identity);
+        }
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1f;
-        
+
         Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        Time.timeScale = 1f;
     }
 }
