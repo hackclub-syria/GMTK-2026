@@ -26,7 +26,7 @@ public class Die : MonoBehaviour
         
         // impact frame ahh
         Time.timeScale = 0f;
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1f;
         
         Destroy(gameObject);
