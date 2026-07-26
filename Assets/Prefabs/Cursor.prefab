@@ -268,9 +268,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   T_mask: {fileID: 1238795158376437686}
   tempo: 240
-  pattern: 0400000004000000020000000200000004000000
+  pattern: 0400000004000000040000000200000002000000
   energyBarImage: {fileID: 0}
-  maxEnergy: 150
+  maxEnergy: 75
   depletionRate: 25
   lerpSpeed: 15
   slowScale: 0.1
