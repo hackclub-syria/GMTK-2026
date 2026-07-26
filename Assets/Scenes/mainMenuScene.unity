@@ -3790,7 +3790,7 @@ MonoBehaviour:
   - {fileID: 917508201, guid: 42743295d425585499df9dc54cf8779c, type: 3}
   - {fileID: 1507567743, guid: 42743295d425585499df9dc54cf8779c, type: 3}
   - {fileID: 1819576535, guid: 42743295d425585499df9dc54cf8779c, type: 3}
-  alwaysPlayComics: 1
+  alwaysPlayComics: 0
 --- !u!4 &1073194386
 Transform:
   m_ObjectHideFlags: 0
