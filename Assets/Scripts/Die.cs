@@ -26,7 +26,6 @@ public class Die : MonoBehaviour
 
     private void Start()
     {
-        Invoke("DieBih", 2f);
         duckSprite = GetComponent<SpriteRenderer>();
         duckCollider = GetComponent<Collider2D>();
     }
