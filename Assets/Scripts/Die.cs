@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Die : MonoBehaviour
 {
     public static Die instance { get; private set; }
     [Header("Settings")]
     public GameObject deathVfxPrefab;
-
+    public GameObject restartMenu;
+    public GameObject pauseMenu;
     private SpriteRenderer duckSprite;
     private Collider2D duckCollider;
 
@@ -34,6 +37,8 @@ public class Die : MonoBehaviour
 
     private IEnumerator JuicyDeathRoutine()
     {
+        restartMenu.SetActive(true);
+        pauseMenu.SetActive(false);
         if (duckCollider != null) duckCollider.enabled = false;
         if (duckSprite != null) duckSprite.enabled = false;
         if (deathVfxPrefab != null)
