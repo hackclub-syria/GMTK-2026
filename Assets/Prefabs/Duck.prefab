@@ -438,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   cursorScript: {fileID: 0}
   groundCheckPoint: {fileID: 5371584197917691379}
-  checkSize: {x: 0.72, y: 0.67}
+  checkSize: {x: 0.62, y: 0.62}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -619,5 +619,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   target: {fileID: 1035441952396224224}
-  offset: {x: -4, y: 4, z: 0}
+  offset: {x: -2, y: 2, z: 0}
   smoothTime: 0.1
