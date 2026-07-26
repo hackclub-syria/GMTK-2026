@@ -32,7 +32,7 @@ public class VelocityVisualizer : MonoBehaviour
         lr.numCapVertices = 0;
         lr.numCornerVertices = 0;
     }
-    void OnGUI()
+/*    void OnGUI()
     {
         // 1. Create a custom style based on Unity's default Box
         GUIStyle style = new GUIStyle(GUI.skin.box);
@@ -43,7 +43,7 @@ public class VelocityVisualizer : MonoBehaviour
 
         // 2. Draw the box. Rect(X, Y, Width, Height)
         GUI.Box(new Rect(20, 20, 300, 80), "Float: " + rb.linearVelocity.magnitude.ToString("F2"), style);
-    }
+    }*/
 
     void Update()
     {
