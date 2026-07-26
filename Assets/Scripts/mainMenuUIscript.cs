@@ -11,6 +11,7 @@ public class mainMenuUI : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject credits;
     [SerializeField] private GameObject levels;
+    private GameObject transitionManager;
 
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
@@ -48,6 +49,8 @@ public class mainMenuUI : MonoBehaviour
             if (i == 10) break; 
             buttons[i].interactable = true;
         }
+
+        transitionManager = GameObject.FindGameObjectWithTag("sceneTransition");
     }
 
     public void playButton() {
@@ -128,6 +131,8 @@ public class mainMenuUI : MonoBehaviour
     
     public void openLevel(int levelID) {
         string s = "level" + levelID;
-        SceneManager.LoadScene(s);
+        transitionManager.transform.GetChild(0).gameObject.SetActive(true);
+        //transitionManager.SetActive(true); 
+        sceneTransitionScript.instance.openLevel(s);
     }
 }
