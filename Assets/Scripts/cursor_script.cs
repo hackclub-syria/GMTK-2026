@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine.Audio; // Added for AudioMixer and AudioMixerSnapshot
+using UnityEngine.Audio;
 
 public class cursor_script : MonoBehaviour
 {
@@ -37,6 +37,8 @@ public class cursor_script : MonoBehaviour
     [SerializeField] private AnimationCurve falloff = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
     [SerializeField] private LayerMask affectedLayers;
     [SerializeField] private float maxLaunchSpeed = 60f;
+    public Transform mouseTip;
+
 
     [Header("Red Zones")]
     [SerializeField] private LayerMask redZoneLayer;
@@ -151,15 +153,12 @@ public class cursor_script : MonoBehaviour
             energyBarImage.fillAmount = currentEnergy / maxEnergy;
         }
 
-        // --- Slowmotion State Trigger ---
         if (applyDilation && !isVintageActive)
         {
             isVintageActive = true;
 
-            // Visual Effect
             if (transitionScript != null) transitionScript.TurnOnVintageEffect();
 
-            // Audio Effect: Transition to Slow Motion Audio Snapshot
             if (slowMotionSnapshot != null)
             {
                 slowMotionSnapshot.TransitionTo(enterDuration);
@@ -169,10 +168,8 @@ public class cursor_script : MonoBehaviour
         {
             isVintageActive = false;
 
-            // Visual Effect
             if (transitionScript != null) transitionScript.TurnOffVintageEffect();
 
-            // Audio Effect: Return to Normal Audio Snapshot
             if (normalSnapshot != null)
             {
                 normalSnapshot.TransitionTo(exitDuration);
@@ -216,7 +213,7 @@ public class cursor_script : MonoBehaviour
 
     private void Detonate()
     {
-        Vector3 worldPos = transform.position;
+        Vector3 worldPos = mouseTip.transform.position;
 
         int count = Physics2D.OverlapCircleNonAlloc(worldPos, explosionRadius, hitBuffer, affectedLayers);
 
@@ -252,7 +249,7 @@ public class cursor_script : MonoBehaviour
 
         if (rippleController != null && Mouse.current != null)
         {
-            rippleController.TriggerRipple(Mouse.current.position.ReadValue());
+            rippleController.TriggerRipple(worldPos);
         }
     }
 

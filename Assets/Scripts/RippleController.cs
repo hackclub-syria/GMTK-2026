@@ -27,14 +27,13 @@ public class RippleController : MonoBehaviour
     {
         UpdateRipples();
     }
-    public void TriggerRipple(Vector2 screenPosition)
+    public void TriggerRipple(Vector3 worldPosition)
     {
         if (activeRipples.Count >= MAX_RIPPLES)
         {
             activeRipples.RemoveAt(0);
         }
-
-        Vector2 viewportPos = Camera.main.ScreenToViewportPoint(screenPosition);
+        Vector2 viewportPos = Camera.main.WorldToViewportPoint(worldPosition);
         activeRipples.Add(new Ripple { center = viewportPos, age = 0f });
     }
 

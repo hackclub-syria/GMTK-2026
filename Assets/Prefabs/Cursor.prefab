@@ -41,13 +41,13 @@ AudioSource:
   m_GameObject: {fileID: 1443045380188913235}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -7390554690238701069, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 450d1600d67131e47a45453aeab0c486, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -230,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 667479121102315630}
   - component: {fileID: 6068710275806989994}
+  - component: {fileID: 1846413141966748912}
   m_Layer: 0
   m_Name: Cursor
   m_TagString: Untagged
@@ -247,11 +248,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.04448, y: -0.28684, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0012516, y: 1.0012516, z: 1.0012516}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1426738781486501841}
   - {fileID: 771771422465229777}
+  - {fileID: 3765031217178973301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6068710275806989994
@@ -276,6 +278,8 @@ MonoBehaviour:
   slowScale: 0.1
   enterDuration: 0.15
   exitDuration: 0.06
+  normalSnapshot: {fileID: 24500006, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
+  slowMotionSnapshot: {fileID: 3702816852418861095, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
   explosionRadius: 4
   explosionForce: 15
   falloff:
@@ -306,6 +310,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxLaunchSpeed: 60
+  mouseTip: {fileID: 3765031217178973301}
   redZoneLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -327,6 +332,18 @@ MonoBehaviour:
   transitionScript: {fileID: 0}
   rippleController: {fileID: 0}
   musicAudioSource: {fileID: 3035689146738987776}
+--- !u!114 &1846413141966748912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2820076060129406054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a666d611323a0a64795d9a5c27dd696c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &3584055797998614115
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,3 +528,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &4211447189417731966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3765031217178973301}
+  m_Layer: 0
+  m_Name: MouseTip
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3765031217178973301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211447189417731966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.332, y: 0.371, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 667479121102315630}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
