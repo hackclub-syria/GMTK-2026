@@ -42,6 +42,8 @@ public class cursor_script : MonoBehaviour
     public PostProcessTransition transitionScript;
     public RippleController rippleController;
     private bool isVintageActive = false;
+    public GameObject syncedMusicObject;
+    public AudioSource musicAudioSource;
 
     private Camera Cam;
     private float interval;
@@ -62,6 +64,8 @@ public class cursor_script : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
         interval = 60f / tempo;
+        // fuck best practices
+        Invoke("StartTheMusic", pattern[0] * interval);
 
         if (pattern == null || pattern.Length == 0)
         {
@@ -91,6 +95,11 @@ public class cursor_script : MonoBehaviour
         T_mask.localPosition = new Vector3(T_mask.localPosition.x, newY, T_mask.localPosition.z);
     }
 
+    public void StartTheMusic()
+    {
+        syncedMusicObject.SetActive(true);
+        musicAudioSource.Play();
+    }
     public void SetGroundedState(bool state)
     {
         isGrounded = state;
