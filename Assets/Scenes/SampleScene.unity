@@ -2624,6 +2624,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1372600330}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: normalSnapshot
+      value: 
+      objectReference: {fileID: 24500006, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
+    - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: rippleController
       value: 
       objectReference: {fileID: 519420037}
@@ -2631,6 +2635,10 @@ PrefabInstance:
       propertyPath: transitionScript
       value: 
       objectReference: {fileID: 1191080851}
+    - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: slowMotionSnapshot
+      value: 
+      objectReference: {fileID: 3702816852418861095, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: onDetonate.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
