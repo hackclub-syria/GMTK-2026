@@ -9,7 +9,7 @@ public class Die : MonoBehaviour
 
     void Start()
     {
-        Invoke("DieBih", 2f);
+        //Invoke("DieBih", 2f);
         duckSprite = GetComponent<SpriteRenderer>();
         duckCollider = GetComponent<Collider2D>();
     }
