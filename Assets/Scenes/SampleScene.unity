@@ -379,8 +379,8 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5131579
-    y: 0.099415205
+    x: 0.23684211
+    y: 0.23586744
     width: 0.5263158
     height: 0.5263158
   near clip plane: 0.3
@@ -744,6 +744,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 519420032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &691347281 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3584055797998614115, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+  m_PrefabInstance: {fileID: 1783907475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &889800048 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
@@ -2189,6 +2194,14 @@ PrefabInstance:
       propertyPath: duck
       value: 
       objectReference: {fileID: 1237991022}
+    - target: {fileID: 2132529661258035873, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
+      propertyPath: fill
+      value: 
+      objectReference: {fileID: 691347281}
+    - target: {fileID: 2132529661258035873, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
+      propertyPath: outline
+      value: 
+      objectReference: {fileID: 1390728847}
     - target: {fileID: 2560818717931345068, guid: ebd152bd379604d40801c1c3a9e8de5c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.954792
@@ -2477,6 +2490,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &1390728847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4109580564661352159, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+  m_PrefabInstance: {fileID: 1783907475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1526955290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,6 +2615,10 @@ PrefabInstance:
       propertyPath: Loop
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3035689146738987776, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -7390554690238701069, guid: ea2bcecb03b388c4d8dde1e8ef981645, type: 2}
     - target: {fileID: 6068710275806989994, guid: cbe842921a796cd46bd9ff4ba25bd038, type: 3}
       propertyPath: energyBarImage
       value: 

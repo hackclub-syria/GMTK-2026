@@ -14,7 +14,7 @@ public class UIscript : MonoBehaviour
     [SerializeField] private Slider SFXslider;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private GameObject duck;
-    [SerializeField] private GameObject cur;
+    [SerializeField] private GameObject outline, fill;
 
     private bool isPaused = false;
 
@@ -64,6 +64,9 @@ public class UIscript : MonoBehaviour
         Debug.Log(Time.timeScale);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        outline.GetComponent<SpriteRenderer>().enabled = false;
+        fill.GetComponent<SpriteRenderer>().enabled = false;
+
     }
 
     public void Resume()
@@ -76,6 +79,9 @@ public class UIscript : MonoBehaviour
         isPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
+        outline.GetComponent <SpriteRenderer>().enabled = true;
+        fill.GetComponent<SpriteRenderer>().enabled = true;
+
 
 
     }
@@ -104,6 +110,8 @@ public class UIscript : MonoBehaviour
         SceneManager.LoadSceneAsync(0);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        outline.GetComponent<SpriteRenderer>().enabled = true;
+        fill.GetComponent<SpriteRenderer>().enabled = true;
     }
 
     public void changeMaster()
