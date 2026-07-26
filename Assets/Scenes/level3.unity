@@ -497,8 +497,8 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.08421052
-    y: 0.1965372
+    x: 0.5705263
+    y: 0.029948525
     width: 0.50526315
     height: 0.50538135
   near clip plane: 0.3
@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1073220814751713906, guid: 6b5e0c5fe62a57d45b592ba72dc9ef93, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.64
+      value: 28.27
       objectReference: {fileID: 0}
     - target: {fileID: 1073220814751713906, guid: 6b5e0c5fe62a57d45b592ba72dc9ef93, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70546,16 +70546,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 49, y: 37, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 2
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 50, y: 37, z: 0}
     second:
       serializedVersion: 2
@@ -70818,10 +70808,10 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 127
+  - m_RefCount: 126
     m_Data: {fileID: 11400000, guid: 337ec8cb69c290440a4f349b9de65daa, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 127
+  - m_RefCount: 126
     m_Data: {fileID: -2596030222610105503, guid: 8dc80e10b7722b6438f36baaf68e2abf, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 29
@@ -70860,7 +70850,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 40
+  - m_RefCount: 39
     m_Data:
       e00: -1
       e01: 0
@@ -70897,7 +70887,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 127
+  - m_RefCount: 126
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
