@@ -18,7 +18,8 @@ public class limeLevelChage_script : MonoBehaviour
 
         //transitionManager.transform.GetChild(0).gameObject.SetActive(true);
         transitionManager.SetActive(true);
-
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         sceneTransitionScript.instance.openLevel(targetSceneBuildIndex);
     }
 }
