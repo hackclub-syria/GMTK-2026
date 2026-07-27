@@ -47,7 +47,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 0
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -138,8 +138,12 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
-      physicsShape: []
-      tessellationDetail: -1
+      physicsShape:
+      - - {x: 6, y: 0}
+        - {x: -6, y: 0}
+        - {x: -6, y: -4}
+        - {x: 6, y: -4}
+      tessellationDetail: 0
       bones: []
       spriteID: 16b7523544c09fbd0800000000000000
       internalID: -2596030222610105503

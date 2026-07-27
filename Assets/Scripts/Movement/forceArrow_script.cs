@@ -24,7 +24,7 @@ public class forceArrow_script : MonoBehaviour
     }
 
     private IEnumerator PullPush(Rigidbody2D rb)
-    {
+    {   
         float elapsed = 0f;
         WaitForFixedUpdate wait_fixed = new WaitForFixedUpdate();
 
