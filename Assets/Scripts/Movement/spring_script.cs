@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class spring_script : MonoBehaviour
@@ -6,58 +5,31 @@ public class spring_script : MonoBehaviour
     [Header("Spring Settings")]
     [SerializeField] private float force = 15f;
 
-    [Header("Sprites")]
-    [SerializeField] private Sprite deactivatedSprite;
-    [SerializeField] private Sprite activatedSprite;
-    [SerializeField] private float delay = 0.3f;
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
 
-    private SpriteRenderer sr;
-    private Coroutine co;
+    [SerializeField] private string triggerName = "isActive";
 
     private void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        if (deactivatedSprite != null && sr != null)
-        {
-            sr.sprite = deactivatedSprite;
-        }
+        if (animator == null)
+            animator = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            Vector2 dir = transform.up;
-            float speed_spring_axis = Vector2.Dot(rb.linearVelocity, dir);
+        Rigidbody2D rb = collision.rigidbody;
+        if (rb == null) return;
 
-            if (speed_spring_axis < 0)
-            {
-                rb.linearVelocity -= dir * speed_spring_axis;
-            }
+        Vector2 dir = transform.up;
 
-            rb.AddForce(dir * force, ForceMode2D.Impulse);
-            TriggerSpringVisual();
-        }
-    }
+        float speedSpringAxis = Vector2.Dot(rb.linearVelocity, dir);
+        if (speedSpringAxis < 0)
+            rb.linearVelocity -= dir * speedSpringAxis;
 
-    private void TriggerSpringVisual()
-    {
-        if (sr == null || activatedSprite == null) return;
-        sr.sprite = activatedSprite;
-        if (co != null)
-        {
-            StopCoroutine(co);
-        }
-        co = StartCoroutine(ResetSpriteAfterDelay());
-    }
+        rb.AddForce(dir * force, ForceMode2D.Impulse);
 
-    private IEnumerator ResetSpriteAfterDelay()
-    {
-        yield return new WaitForSeconds(delay);
-        if (deactivatedSprite != null)
-        {
-            sr.sprite = deactivatedSprite;
-        }
+        if (animator != null)
+            animator.SetTrigger(triggerName);
     }
 }

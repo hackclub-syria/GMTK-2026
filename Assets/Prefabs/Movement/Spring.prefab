@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4533701655400247860}
   - component: {fileID: 2679830143549228286}
   - component: {fileID: 6713816089690810218}
+  - component: {fileID: 5056470522240877158}
   m_Layer: 7
   m_Name: Spring
   m_TagString: Untagged
@@ -83,12 +84,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1873205193453405473, guid: fa120b582e691ba438012f4cbba6a8ef, type: 3}
+  m_Sprite: {fileID: -1823418934360308165, guid: 1898bd3f30484354e8a4f71eef250304, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.875, y: 0.5625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -130,9 +131,9 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.12946773}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.25, y: 0.5}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.875, y: 0.5625}
+    newSize: {x: 0.875, y: 0.5625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -152,6 +153,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   force: 10
-  deactivatedSprite: {fileID: 1873205193453405473, guid: fa120b582e691ba438012f4cbba6a8ef, type: 3}
-  activatedSprite: {fileID: -169367939114126186, guid: fa120b582e691ba438012f4cbba6a8ef, type: 3}
-  delay: 0.3
+  animator: {fileID: 0}
+  triggerName: isActive
+--- !u!95 &5056470522240877158
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7488889566829808831}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 50c9004eb9036d34789d0cab695b4066, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
