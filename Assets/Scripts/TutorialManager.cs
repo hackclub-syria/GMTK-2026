@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame)
+        if (Keyboard.current.enterKey.wasPressedThisFrame || Keyboard.current.numpadEnterKey.wasPressedThisFrame || Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             if (tutorialGroups == null || tutorialGroups.Length == 0) return;
 

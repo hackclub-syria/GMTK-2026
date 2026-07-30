@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.InputSystem;
-using System.Collections; 
+using System.Collections;
 
 public class mainMenuUI : MonoBehaviour
 {
@@ -24,8 +24,8 @@ public class mainMenuUI : MonoBehaviour
     [SerializeField] private Sprite[] images;
     [SerializeField] private bool alwaysPlayComics;
 
-
-    void Awake() {
+    void Awake()
+    {
         if (!PlayerPrefs.HasKey("master"))
         {
             PlayerPrefs.SetFloat("master", 1);
@@ -40,66 +40,99 @@ public class mainMenuUI : MonoBehaviour
         SFXslider.value = PlayerPrefs.GetFloat("sfx");
         audioMixer.SetFloat("SFXvolume", Mathf.Log10(SFXslider.value) * 20f);
 
-        // locked levels 
-        int unlockedlevel = PlayerPrefs.GetInt("unlockedlevel", 1), i;
-        for (i = 0; i < buttons.Length; i++) {
+        int unlockedlevel = PlayerPrefs.GetInt("unlockedlevel", 1);
+        for (int i = 0; i < buttons.Length; i++)
+        {
             buttons[i].interactable = false;
         }
-        for (i = 0; i < unlockedlevel; i++) {
-            if (i > 6) break; 
+        for (int i = 0; i < unlockedlevel; i++)
+        {
+            if (i > 6) break;
             buttons[i].interactable = true;
         }
-        buttons[8].interactable = buttons[9].interactable = true; 
+        buttons[8].interactable = buttons[9].interactable = true;
 
         transitionManager = GameObject.FindGameObjectWithTag("sceneTransition");
     }
 
-    public void playButton() {
-        if (!PlayerPrefs.HasKey("firstPressPlay")) PlayerPrefs.SetInt("firstPressPlay", 0); 
-        if (PlayerPrefs.GetInt("firstPressPlay") == 0) {
-            PlayerPrefs.SetInt("firstPressPlay", 1);
-            PlayerPrefs.Save(); 
-            StartCoroutine(playdSlideShow());
+    public void playButton()
+    {
+        bool isFirstPlay = PlayerPrefs.GetInt("firstPressPlay", 0) == 0;
+
+        if (isFirstPlay || alwaysPlayComics)
+        {
+            if (isFirstPlay)
+            {
+                PlayerPrefs.SetInt("firstPressPlay", 1);
+                PlayerPrefs.Save();
+            }
+            StartCoroutine(playSlideShow());
         }
-        else if (alwaysPlayComics) StartCoroutine(playdSlideShow());
-        else {
+        else
+        {
             mainMenu.SetActive(false);
             levels.SetActive(true);
         }
     }
-    IEnumerator playdSlideShow() {
+
+    IEnumerator playSlideShow()
+    {
         mainMenu.SetActive(false);
         comicPanel.SetActive(true);
-        int i;
-        Debug.Log(images.Length);
-        for (i = 0; i < images.Length; ++i) {
-            Debug.Log(i);
+
+        yield return new WaitForSeconds(0.2f);
+
+        for (int i = 0; i < images.Length; ++i)
+        {
             panelImage.sprite = images[i];
-            while (!Keyboard.current.spaceKey.wasPressedThisFrame) yield return null; 
-            while(!Keyboard.current.spaceKey.wasReleasedThisFrame) yield return null;
+
+            bool inputPressed = false;
+
+            while (!inputPressed)
+            {
+                if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
+                {
+                    inputPressed = true;
+                }
+
+                if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    inputPressed = true;
+                }
+
+                yield return null;
+            }
         }
+
         comicPanel.SetActive(false);
-        mainMenu.SetActive(true);
-        SceneManager.LoadScene("level0"); 
+        transitionManager.transform.GetChild(0).gameObject.SetActive(true);
+        sceneTransitionScript.instance.openLevel("level0");
     }
-    public void quitLevelsMenu() {
+
+    public void quitLevelsMenu()
+    {
         levels.SetActive(false);
         mainMenu.SetActive(true);
     }
-    public void settingsButton() {
+
+    public void settingsButton()
+    {
         settings.SetActive(true);
         mainMenu.SetActive(false);
     }
+
     public void quiitSettingsButton()
     {
         settings.SetActive(false);
         mainMenu.SetActive(true);
     }
+
     public void creditsButton()
     {
         credits.SetActive(true);
         mainMenu.SetActive(false);
     }
+
     public void quitCreditsButton()
     {
         credits.SetActive(false);
@@ -117,23 +150,25 @@ public class mainMenuUI : MonoBehaviour
         PlayerPrefs.Save();
         audioMixer.SetFloat("masterVolume", Mathf.Log10(masterSlider.value) * 20f);
     }
+
     public void changeMusic()
     {
         PlayerPrefs.SetFloat("music", musicSlider.value);
         PlayerPrefs.Save();
         audioMixer.SetFloat("musicVolume", Mathf.Log10(musicSlider.value) * 20f);
     }
+
     public void changeSFX()
     {
         PlayerPrefs.SetFloat("sfx", SFXslider.value);
         PlayerPrefs.Save();
         audioMixer.SetFloat("SFXvolume", Mathf.Log10(SFXslider.value) * 20f);
     }
-    
-    public void openLevel(int levelID) {
+
+    public void openLevel(int levelID)
+    {
         string s = "level" + levelID;
         transitionManager.transform.GetChild(0).gameObject.SetActive(true);
-        //transitionManager.SetActive(true); 
         sceneTransitionScript.instance.openLevel(s);
     }
 }
