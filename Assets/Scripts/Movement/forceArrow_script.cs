@@ -17,6 +17,7 @@ public class forceArrow_script : MonoBehaviour
 
             if (rb != null)
             {
+                rb.gameObject.GetComponent<Animator>().CrossFade("yeet", 0f);
                 StopAllCoroutines();
                 StartCoroutine(PullPush(rb));
             }

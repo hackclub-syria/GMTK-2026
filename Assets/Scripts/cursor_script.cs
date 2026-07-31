@@ -64,6 +64,8 @@ public class cursor_script : MonoBehaviour
 
     private readonly Collider2D[] hitBuffer = new Collider2D[32];
 
+    public bool weAtPlayGround = false; // when this is true, slow mo energy is infinite 
+
     void Start()
     {
         Cam = Camera.main;
@@ -133,7 +135,7 @@ public class cursor_script : MonoBehaviour
 
         bool applyDilation = isSpacePressed && canDilate && currentEnergy > 0f;
 
-        if (applyDilation)
+        if (applyDilation && !weAtPlayGround)
         {
             currentEnergy -= depletionRate * Time.unscaledDeltaTime;
             if (currentEnergy <= 0f)
@@ -143,7 +145,7 @@ public class cursor_script : MonoBehaviour
                 applyDilation = false;
             }
         }
-        else if (isGrounded)
+        else if (isGrounded || weAtPlayGround)
         {
             currentEnergy = maxEnergy;
         }
