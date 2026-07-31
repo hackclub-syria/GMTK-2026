@@ -2637,7 +2637,7 @@ RectTransform:
   m_GameObject: {fileID: 646429495}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.63, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 661760357}
@@ -2677,7 +2677,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2736,7 +2736,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &646429498
@@ -3133,8 +3133,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 344, y: 0}
-  m_SizeDelta: {x: 880, y: 900}
+  m_AnchoredPosition: {x: 506.7089, y: 0}
+  m_SizeDelta: {x: 1205.417, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &749802454
 MonoBehaviour:
@@ -3174,6 +3174,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749802452}
   m_CullTransparentMesh: 1
+--- !u!1 &760612182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 760612183}
+  m_Layer: 5
+  m_Name: offset parent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &760612183
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760612182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1129030718}
+  m_Father: {fileID: 1274570343}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -414.07, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &816784423
 GameObject:
   m_ObjectHideFlags: 0
@@ -4316,12 +4352,12 @@ Transform:
   m_GameObject: {fileID: 1129030717}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -320, y: 0, z: 0}
+  m_LocalPosition: {x: 19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 749802453}
-  m_Father: {fileID: 1274570343}
+  m_Father: {fileID: 760612183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1129030719
 Animator:
@@ -5201,7 +5237,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 126202641515681315}
-  - {fileID: 1129030718}
+  - {fileID: 760612183}
   - {fileID: 165646320}
   - {fileID: 632814360}
   - {fileID: 267028036}
@@ -5833,7 +5869,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1584778686
@@ -5856,37 +5892,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'A game by Hack Club Syria; we are a group of Syrian teenagers who love
-    making video games.
-
-
-    Zaid Mermam (kazoya) - Lead Game Developer
-
-
-    Nabil
-    Altabbaa (Lime) - Game Programmer
-
-
-    Abdulrahman Safar - Game Programmer
-
-
-    Abdullah
-    Kassar - Logic Programmer
-
-
-
-    Dima Sandouk (Kabii) - Lead Pixel Artist
-
-
-    Rama
-    Alsaty - Lead High Res Artist
-
-
-    Mohamad Al-Shafee - Concept Artist
-
-
-    Nabil
-    Altabbaa (Lime) - Music Composer/Producer'
+  m_text: "A game by Hack Club Syria; we are a group of Syrian teenagers who love
+    making video games.\n\nZaid Mermam (kazoya) - Lead Game Developer\n\nNabil Altabbaa
+    (Lime) - Game Programmer & Musician  \n\nAbdulrahman Safar - Game Programmer\n\nAbdullah
+    Kassar - Logic Programmer\n\nKabii - Lead Pixel Artist\n\nRama Alsaty - Lead
+    High Res Artist\n\nMohamad Al-Shafee - Concept Artist\n\nSyriatel (Internet Provider)
+    - Preventing us from submitting on time"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5895,8 +5906,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
